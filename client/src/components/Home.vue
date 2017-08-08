@@ -22,8 +22,8 @@
                     <td>{{todo.title}}</td>
                     <td>{{todo.content}}</td>
                     <td>
-                      <router-link :to="'/Home/updateTodo/' + todo._id" class="btn btn-info"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span></router-link>
-                      <button type="submit" class="btn btn-danger"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></button>
+                      <router-link :to="'/updateTodo/' + todo._id" class="btn btn-info"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span></router-link>
+                      <button @click="deleteTodo(todo._id)" type="submit" class="btn btn-danger"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></button>
                     </td>
                   </tr>
                 </tbody>
@@ -39,7 +39,7 @@
 
 <script>
 import navbar from '@/components/Navbar'
-import createTodo from '@/components/CreateTodo'
+// import createTodo from '@/components/CreateTodo'
 // import updateTodo from '@/components/UpdateTodo'
 export default {
   data () {
@@ -47,7 +47,7 @@ export default {
       data: []
     }
   },
-  components: {navbar, createTodo},
+  components: {navbar},
   methods: {
     getAllTodos () {
       // console.log(localStorage.getItem('token'))
@@ -55,6 +55,16 @@ export default {
       .then(res => {
         console.log(res)
         this.data = res.data
+      })
+      .catch(err => {
+        console.log(err)
+      })
+    },
+    deleteTodo (param) {
+      this.$http.delete(`http://localhost:3000/api/todo/${param}`, {headers: {token: localStorage.getItem('token')}})
+      .then(res => {
+        alert('todo already delete')
+        this.getAllTodos()
       })
       .catch(err => {
         console.log(err)
