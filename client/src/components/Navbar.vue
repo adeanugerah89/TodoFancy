@@ -13,10 +13,6 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <form class="navbar-form navbar-right">
-            <div class="form-group">
-              <input type="text" placeholder="search Todo" class="form-control">
-            </div>
-            <button type="submit" class="btn btn-success">Search</button>
             <button @click='logout()' type="submit" class="btn btn-danger">Logout</button>
           </form>
         </div>

@@ -38,7 +38,7 @@ export default {
         localStorage.setItem('token', token)
         localStorage.setItem('id', res.data.user_id)
         localStorage.setItem('username', res.data.username)
-        this.$router.push('/Home')
+        this.$router.push('/home')
       })
       .catch(err => {
         console.log(err)

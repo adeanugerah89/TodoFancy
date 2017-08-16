@@ -19,7 +19,7 @@
                 </thead>
                 <tbody>
                   <tr v-for="todo in data">
-                    <td>{{todo.title}}</td>
+                    <td><router-link :to="'detail/'+todo._id">{{todo.title}}</router-link></td>
                     <td>{{todo.content}}</td>
                     <td>
                       <router-link :to="'/updateTodo/' + todo._id" class="btn btn-info"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span></router-link>

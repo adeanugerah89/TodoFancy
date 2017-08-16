@@ -6,6 +6,7 @@ import Register from '@/components/Register'
 import Home from '@/components/Home'
 import createTodo from '@/components/CreateTodo'
 import updateTodo from '@/components/UpdateTodo'
+import DetailTodo from '@/components/DetailTodo'
 
 Vue.use(Router)
 
@@ -25,6 +26,11 @@ export default new Router({
       path: '/home',
       name: 'Home',
       component: Home
+    },
+    {
+      path: '/detail/:id',
+      component: DetailTodo,
+      props: true
     },
     {
       path: '/createTodo',
